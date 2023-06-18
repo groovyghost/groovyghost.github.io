@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="https://groovyghost.in/rss.xml">
+    
+    <meta charset="utf-8" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Groovy Ghost</title>
+    <link rel="stylesheet" href="https://groovyghost.in/style.css?h=952372007fe5dc30ecb7" />
+    <link rel="shortcut icon" type="image/png" href="https://groovyghost.in/favicon.png"/>
+    <script
+      src="https://kit.fontawesome.com/93866eaaa9.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+    <nav class="menu">
+      <div class="nav-left">
+        <ul>
+          <li>
+            <a href="/"
+              ><img class="logo" src="https://groovyghost.in/favicon.png" alt="" /><span
+                class="sitename"
+                >Groovy Ghost</span
+              ></a
+            >
+          </li>
+        </ul>
+      </div>
+      <div class="nav-right">
+        <ul>
+        <li class="icons">
+            <a
+                title="RSS feed"
+              class="fas fa-rss"
+              href="https://groovyghost.in/rss.xml"
+            ></a>
+            <a
+                title="Dark mode"
+              id="darkmodetoggle"
+              class="fas fa-moon"
+              onclick="switchTheme()"
+            ></a>
+        <a id="toggle-nav" onclick="toggleNav()">
+            <i class="fa fa-bars"></i>
+        </a>
+          </li>
+        </ul>
+        <ul id="links">
+          <li><a href="mailto:grovyghost@protonmail.com">contact</a></li>
+          <li><a target="_blank" href="https://github.com/groovyghost">github</a></li>
+        </ul>
+      </div>
+    </nav>
+
+  <body>
+    <section class="section">
+      <div class="container">
+<h1 class="title">
+  10 Underrated Linux commands
+</h1>
+<p class="subtitle"><strong>2021-10-12</strong></p>
+<p>Linux has tons of nifty commands, here's 10 super heroic Linux commands that you probably need to add to your toolbox.</p>
+<ol>
+<li>Redo last command but with sudo</li>
+</ol>
+<p><code>sudo !!</code></p>
+<ol start="2">
+<li>Open an editor to run a command</li>
+</ol>
+<p>Ctrl+x+e</p>
+<ol start="3">
+<li>Create a super fast ram disk</li>
+</ol>
+<pre class="z-code"><code><span class="z-text z-plain">mkdir -p /mnt/ram
+
+mount -t tmpfs tmpfs /mnt/ram -o size=8192M 
+</span></code></pre>
+<ol start="4">
+<li>Messed up a long command?</li>
+</ol>
+<p><code>fc</code> will open up your last command in editor.</p>
+<ol start="5">
+<li>netstat: command not found ?</li>
+</ol>
+<p><code>ss</code> Socket statistics, a substitue of netstat</p>
+<ol start="6">
+<li>Quickly create folders</li>
+</ol>
+<pre class="z-code"><code><span class="z-text z-plain">mkdir -p folder/{sub1,sub2}/{sub1,sub2,sub3}
+
+mkdir -p folder/{1..100}/{1..100}
+</span></code></pre>
+<p>Also works with number ranges</p>
+<ol start="7">
+<li>Intercept stdout and log to file</li>
+</ol>
+<pre class="z-code"><code><span class="z-text z-plain">cat file | tee -a log | cat &gt; /dev/null
+</span></code></pre>
+<ol start="8">
+<li>Solve simple mathematical calculations from terminal</li>
+</ol>
+<p><code>expr</code></p>
+<p><code>expr 2 + 2</code></p>
+<ol start="9">
+<li>Want to know history of last logged in users?</li>
+</ol>
+<p><code>last</code> This command comes to rescue here</p>
+<ol start="10">
+<li>exit terminal but leave all processes running</li>
+</ol>
+<p><code>disown -a &amp;&amp; exit</code></p>
+<p>Bonus : <code>python -m http.server</code></p>
+<p>Creates a simple web page for the current working directory over port 8000.</p>
+
+</div>
+    </section>
+
+
+
+<footer>
+	<p>Powered by <a target="_blank" href="https://www.getzola.org/">Zola</a></p>
+  <p>Built with <i class="far fa-heart"></i> by Ghost</p>
+</footer>
+<script src="https://groovyghost.in/darktheme.js?h=c8f029cbce9d5afa02b3" crossorigin="anonymous"></script>
+<script src="https://groovyghost.in/nav-toggle.js?h=01a7f6219b688ab18d5d" crossorigin="anonymous"></script>
+
+  </body>
+
+
+</html>

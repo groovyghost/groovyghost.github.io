@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="https://groovyghost.in/rss.xml">
+    
+    <meta charset="utf-8" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Groovy Ghost</title>
+    <link rel="stylesheet" href="https://groovyghost.in/style.css?h=952372007fe5dc30ecb7" />
+    <link rel="shortcut icon" type="image/png" href="https://groovyghost.in/favicon.png"/>
+    <script
+      src="https://kit.fontawesome.com/93866eaaa9.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+    <nav class="menu">
+      <div class="nav-left">
+        <ul>
+          <li>
+            <a href="/"
+              ><img class="logo" src="https://groovyghost.in/favicon.png" alt="" /><span
+                class="sitename"
+                >Groovy Ghost</span
+              ></a
+            >
+          </li>
+        </ul>
+      </div>
+      <div class="nav-right">
+        <ul>
+        <li class="icons">
+            <a
+                title="RSS feed"
+              class="fas fa-rss"
+              href="https://groovyghost.in/rss.xml"
+            ></a>
+            <a
+                title="Dark mode"
+              id="darkmodetoggle"
+              class="fas fa-moon"
+              onclick="switchTheme()"
+            ></a>
+        <a id="toggle-nav" onclick="toggleNav()">
+            <i class="fa fa-bars"></i>
+        </a>
+          </li>
+        </ul>
+        <ul id="links">
+          <li><a href="mailto:grovyghost@protonmail.com">contact</a></li>
+          <li><a target="_blank" href="https://github.com/groovyghost">github</a></li>
+        </ul>
+      </div>
+    </nav>
+
+  <body>
+    <section class="section">
+      <div class="container">
+<h1 class="title">
+  Learn Markdown
+</h1>
+<p class="subtitle"><strong>2021-10-10</strong></p>
+<p>For website/blog instead of writing pure HTML and uploading it to a server like a caveman i started using Markdown, a lightweight markup language for creating formatted text using a plain-text editor that is appealing to human readers in its source code form.</p>
+<h3 id="basic-markdown-syntax">Basic markdown syntax</h3>
+<pre class="z-code"><code><span class="z-text z-plain"># Start a heading with one hash
+
+## Start a subheading with two hashes
+
+Paragraphs are separated by empty lines.
+
+**Bold text** is wrapped in double asterisks,
+
+_italic_ in underscores,
+
+`monospace` in backticks.
+
+[A link](https://groovyghost.in/).
+
+![An image](/avatar.jpeg)
+
+    # Indented code block
+    hello() { echo &#39;Hello&#39;; }
+
+A list of items:
+
+- Each item is on its line
+- Lines start with `-`
+
+An ordered list:
+
+1. The first item
+1. The second item can start with `1.` too
+1. Markdown handles the numbering for you.
+
+</span></code></pre>
+<p>To convert markdown to HTML you can use <a href="https://kristaps.bsd.lv/lowdown/">lowdown</a>, <a href="https://pandoc.org/">pandoc</a> or with <a href="https://daringfireball.net/projects/markdown/">original markdown.pl</a></p>
+<p>Credit to <a href="https://www.markdownguide.org/basic-syntax">markdownguide</a></p>
+
+</div>
+    </section>
+
+
+
+<footer>
+	<p>Powered by <a target="_blank" href="https://www.getzola.org/">Zola</a></p>
+  <p>Built with <i class="far fa-heart"></i> by Ghost</p>
+</footer>
+<script src="https://groovyghost.in/darktheme.js?h=c8f029cbce9d5afa02b3" crossorigin="anonymous"></script>
+<script src="https://groovyghost.in/nav-toggle.js?h=01a7f6219b688ab18d5d" crossorigin="anonymous"></script>
+
+  </body>
+
+
+</html>
