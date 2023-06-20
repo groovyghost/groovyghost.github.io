@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="https://groovyghost.in/rss.xml">
+    
+    <meta charset="utf-8" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Groovy Ghost</title>
+    <link rel="stylesheet" href="https://groovyghost.in/style.css?h=9bc6b4e6273173d0a5a6" />
+    <link rel="shortcut icon" type="image/png" href="https://groovyghost.in/favicon.png"/>
+    <script
+      src="https://kit.fontawesome.com/93866eaaa9.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+    <nav class="menu">
+      <div class="nav-left">
+        <ul>
+          <li>
+            <a href="/"
+              ><img class="logo" src="https://groovyghost.in/favicon.png" alt="" /><span
+                class="sitename"
+                >Groovy Ghost</span
+              ></a
+            >
+          </li>
+        </ul>
+      </div>
+      <div class="nav-right">
+        <ul>
+        <li class="icons">
+            <a
+                title="RSS feed"
+              class="fas fa-rss"
+              href="https://groovyghost.in/rss.xml"
+            ></a>
+            <a
+                title="Dark mode"
+              id="darkmodetoggle"
+              class="fas fa-moon"
+              onclick="switchTheme()"
+            ></a>
+        <a id="toggle-nav" onclick="toggleNav()">
+            <i class="fa fa-bars"></i>
+        </a>
+          </li>
+        </ul>
+        <ul id="links">
+          <li><a href="mailto:grovyghost@protonmail.com">contact</a></li>
+          <li><a target="_blank" href="https://github.com/groovyghost">github</a></li>
+        </ul>
+      </div>
+    </nav>
+
+  <body>
+    <section class="section">
+      <div class="container">
+<h1 class="title">
+  Understanding LVM
+</h1>
+<p class="subtitle"><strong>2021-10-17</strong></p>
+<p>Have you ever wanted to take a secondary drive and just combine onto your exsiting system,Well you’re in luck if you are using Linux specifically with LVM.But what is LVM?</p>
+<p>LVM stands for Logical Volume Management. It’s a disk management tool that makes it easier to manage disk space. In LVM, instead of creating partitions, you create logical volumes, and then you can just as easily mount those volumes in your filesystem as you’d a disk partition.</p>
+<h4 id="why-use-lvm">Why use LVM?</h4>
+<p>The main advantage of LVM is how easy it is to resize a volume or volume group. It abstracts away all the ugly parts (partitions, raw disks) and leaves us with a central storage pool to work with.</p>
+<p>If you’ve ever experienced the horror of partition resizing, you’d wanna use LVM.</p>
+<p>Acronyms you must know!
+<em>PV</em> – Physical Volume</p>
+<p><em>VG</em> – Volume Group</p>
+<p><em>LV</em> – Logical Volume</p>
+<div class="post__image">
+    <a href="https://groovyghost.in/blog/2021-oct-17-lvm/lvm-guide.jpg" class="image-link" target="_blank">
+        <img src="https://groovyghost.in/blog/2021-oct-17-lvm/lvm-guide.jpg" alt="LVM">
+    </a>
+</div>
+<p><em>LVM Commands</em></p>
+<h4 id="lvm-layer-1-hard-drives-partitions-and-physical-volumes">LVM Layer 1 – Hard Drives, Partitions, and Physical Volumes</h4>
+<ul>
+<li><code>lvmdiskscan</code> – system readout of volumes and partitions</li>
+<li><code>pvdisplay</code> – display detailed info on physical volumes</li>
+<li><code>pvscan</code> – display disks with physical volumes</li>
+<li><code>pvcreate /dev/sda1</code> – create a physical volume from sda1</li>
+<li><code>pvchange -x n /dev/sda1</code> – Disallow using a disk partition</li>
+<li><code>pvresize /dev/sda1</code> – resize sda1 PV to use all of the partition</li>
+<li><code>pvresize --setphysicalvolumesize 140G /dev/sda1</code> – resize sda1 to 140g</li>
+<li><code>pvmove /dev/sda1</code> – can move data out of sda1 to other PVs in VG.</li>
+<li><code>pvremove /dev/sda1</code> – delete Physical volume</li>
+</ul>
+<h4 id="lvm-layer-2-volume-groups">LVM Layer 2 – Volume Groups</h4>
+<ul>
+<li><code>vgcreate vg1 /dev/sda1 /dev/sdb1</code> – create a volume group from two drives</li>
+<li><code>vgextend vg1 /dev/sdb1</code> – add PV to the volume group</li>
+<li><code>vgdisplay vg1</code> – Display details on a volume group</li>
+<li><code>vgscan</code> – list volume groups</li>
+<li><code>vgreduce vg1 /dev/sda1</code> – Removes the drive from vg1. (use pvmove /dev/sda1 before removing the drive from vg1)</li>
+<li><code>vgchange</code> – you can activate/deactive and change perameteres</li>
+<li><code>vgremove vg1</code> – Remove volume group vg1</li>
+<li><code>vgsplit</code> and <code>vgmerge</code> can split and merge volume groups</li>
+<li><code>vgrename</code> – renames a volume group</li>
+</ul>
+<h4 id="lvm-layer-3-logical-volumes-and-file-systems">LVM Layer 3 – Logical Volumes and File Systems</h4>
+<ul>
+<li><code>lvcreate -L 10G vg1</code> – create a 10 GB logical volume on volume group vg1</li>
+<li><code>lvchange</code> and <code>lvreduce</code> are commands that typically aren’t used</li>
+<li><code>lvrename</code> – rename logical volume</li>
+<li><code>lvremove</code> – removes a logical volume</li>
+<li><code>lvscan</code> – shows logical volumes</li>
+<li><code>lvdisplay</code> – shows details on logical volumes</li>
+<li><code>lvextend -l +100%FREE /dev/vg1/lv1</code> – One of the most common commands used to extend logical volume lv1 that takes up ALL of the remaining free space on the volume group vg1.</li>
+<li><code>resize2fs /dev/vg1/lv1</code> – resize the file system to the size of the logical volume lv1.</li>
+</ul>
+<h4 id="conclusion">Conclusion</h4>
+<p>LVM is fantastic for managing a system, but remember that the more drives you make in a volume group that the likely it is to fail. Instead of having one point of failure you can open yourself up for multiple points when making a large system with multiple drives.</p>
+
+</div>
+    </section>
+
+<footer>
+	<p>Powered by <a target="_blank" href="https://www.getzola.org/">Zola</a></p>
+  <p>Built with <i class="far fa-heart"></i> by Ghost</p>
+</footer>
+<script src="https://groovyghost.in/darktheme.js?h=c8f029cbce9d5afa02b3" crossorigin="anonymous"></script>
+<script src="https://groovyghost.in/nav-toggle.js?h=01a7f6219b688ab18d5d" crossorigin="anonymous"></script>
+
+  </body>
+
+
+</html>
